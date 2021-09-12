@@ -112,7 +112,7 @@ After completing course grades and saving them in a CSV file, Grader-Alert may b
 # Bulk Pusher script.
 # Date: 11 Sept 2021
 # Oliver Bonham-Carter, obonhamcarter@allegheny.edu
-# This script uses the file, dirNames to locate repositories to push
+# This script uses the File, dirNames, to locate repositories to push
 # The current date is printed in the commit message of the submit
 # A file, "0_thisLastPush.txt" is created to state when the last bulk push was completed.
 
