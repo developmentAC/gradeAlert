@@ -17,7 +17,7 @@ GitHub link: https://github.com/developmentAC/beagleTM
 * [Overview](#overview)
 * [Tool](#tool)
 * [Usage-At-Terminal](#usage-at-terminal)
-* [CSV files](CSV-files)
+* [CSV](CSV)
 * [Outputted files](outputted-files)
 * [Pushing in Bulk](pushing-in-bulk)
 * [A work in progress](A-work-in-progress)
@@ -46,7 +46,7 @@ To process the CSV spreadsheet, `demoGrades_short.csv` (files formats are discus
 
 
 
-### CSV files
+### CSV
 
 To use this Grade-Alert, the student grades are to be kept in a comma separated variable (CSV) file. Please note that no commas may be used in the fields of the CSV file as they will serve to confuse the true delimiters of the CSV structure and will prevent Grade-Alert from opening the CSV files correctly.
 
