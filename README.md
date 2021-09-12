@@ -142,15 +142,6 @@ rm mydir
 The file, `dirNames` contains the paths of the repositories to which we push.
 
 
-
-
-![Titles may be found in the networks, File mouseOver.png](graphics/mouseOver.png)
-Figure 1: A screenshot.
-
-
-
-
-
 ### A work in progress
 
 Check back often to see the evolution of this project!! Grade-Alert is a work-in-progress. Updates are likely to come soon with feedback. If you would like to contribute to this project, __then please do!__ For instance, if you see some low-hanging fruit or task that you could easily complete, that could add value to the project, then I would love to have your insight.
