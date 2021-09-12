@@ -17,10 +17,10 @@ GitHub link: https://github.com/developmentAC/beagleTM
 * [Overview](#overview)
 * [Tool](#tool)
 * [Usage-At-Terminal](#usage-at-terminal)
-* [CSV](CSV)
-* [Outputted files](outputted-files)
-* [Pushing in Bulk](pushing-in-bulk)
-* [A work in progress](A-work-in-progress)
+* [CSV](#CSV)
+* [Outputted files](#outputted-files)
+* [Pushing in Bulk](#pushing-in-bulk)
+* [A work in progress](#A-work-in-progress)
 
 
 
