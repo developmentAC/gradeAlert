@@ -134,8 +134,6 @@ do
 done
 
 rm mydir
-
-
 ```
 
 The file, `dirNames` contains the paths of the repositories to which we push. To conveniently prepare this file, begin with the following command from the directory where the class repositories are stored.
