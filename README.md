@@ -100,12 +100,11 @@ Each prepared file is to be then to be placed into its associated grade book rep
 
 ### Pushing in Bulk
 
-Each student who has accepted the grade book "assignment" will have a repository that the instructor can access. The instructor will then use [GitHub Assistant](http://https://classroom.github.com/assistant) (link: https://classroom.github.com/assistant) to create a local directory containing all cloned grade book repositories.
+Each student who has accepted the grade book "assignment" will have a repository that the instructor can access. Sadly, the [GitHub Assistant](http://https://classroom.github.com/assistant) (link: https://classroom.github.com/assistant) will not work to create repositories into which grades may be pushed. Instead, the instructor is to clone each of the grade book "assignment" repositories listed by GitHub Classroom. Grade book files may now be pushed into these repositories by the instructor using the below `bulkPusher.sh` script.
 
-After completing course grades and saving them in a CSV file, Grader-Alert may be executed with the CSV file as the parameter. The resulting files will have to be placed into the individual grade book repositories. To facilitate the pushing of all these repositories, the below script (located in `src/bulkPusher.sh`) may be be used. To execute this script in Linux and MacOS, use the command, `sh bulkPusher.sh` when the files have been copied into the grade book repositories.
+After completing course grades save a copy of the spreadsheet as a CSV file. Grader-Alert may be executed with the CSV file as the parameter. The resulting files will have to be placed into the individual grade book repositories.
 
-
-
+To facilitate the pushing of all these repositories, the below script (located in `src/bulkPusher.sh`) may be be used. To execute this script in Linux and MacOS, use the command, `sh bulkPusher.sh` when the files have been copied into the grade book repositories.
 
 ```bash
 
@@ -139,8 +138,23 @@ rm mydir
 
 ```
 
-The file, `dirNames` contains the paths of the repositories to which we push.
+The file, `dirNames` contains the paths of the repositories to which we push. To conveniently prepare this file, begin with the following command from the directory where the class repositories are stored.
 
+``` bash
+ls -l | cut -d " " -f 9 > dirNames
+```
+
+This file is to be edited to contain only the paths to the student grade book repositories. This file is then to be stored in the same root as the repositories so that the `bulkPushers.sh` can find it (and the repository paths it contains) when run.
+
+```
+repos/gradebook-student1
+repos/gradebook-student2
+...
+repos/dirNames
+repos/bulkPusher.sh
+```
+
+In a convenient setup, the repositories. `dirNames` and `bulkPusher.sh` are stored in the same location.
 
 ### A work in progress
 
