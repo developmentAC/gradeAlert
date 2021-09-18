@@ -121,37 +121,12 @@ def helper():
 
 
 
-
-def getFile(fname):
-	"""open textfile name to load and extract text"""
-	#fname = input("  Enter the name of the file :")
-
-	data_str = ""
-	try:
-		with open(fname) as file:
-			for line in file:
-				data_str = data_str + line
-				data_str = data_str.replace("\n"," ")
-		#print("contents: ",data_str, type(data_str))
-	except FileNotFoundError:
-		print("\t [+] Error with finding the file... exiting")
-		exit()
-	data_str = data_str.lower()
-	#remove basiprintWithColourc punctuation
-	punctuation = "!`':,?.()/\\"
-	for p in punctuation:
-	    data_str = data_str.replace(p," ")
-	return data_str.split() # return a list
-#end of getFile()
-
-
-
 def getArguments(argv_list):
 	""" A function to determine what parameters have been entered"""
 
 	# print(argv_list)
 
-	param_1 = "CSV" # call for getFile()
+	param_1 = "CSV" # call for cvsReader()
 	param_2 = "-H" # call for helper()
 
 	if len(argv_list) == 0:
