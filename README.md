@@ -152,7 +152,7 @@ repos/dirNames
 repos/bulkPusher.sh
 ```
 
-In a convenient setup, the repositories. `dirNames` and `bulkPusher.sh` are stored in the same location.
+In a convenient setup, the repositories, the files `dirNames` and `bulkPusher.sh` are stored in the same location.
 
 ### A work in progress
 
