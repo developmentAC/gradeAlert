@@ -135,12 +135,17 @@ local.properties
 # CTags #
 ######################
 tags
+
+# System files
 .DS_Store
 
 *~
 # Libre Office #
 # ####################
- *.odp#
+*.odp#
 
 # gradle files
- .gradle
+.gradle
+ 
+# Python files
+__pycache__

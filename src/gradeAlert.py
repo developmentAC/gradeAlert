@@ -186,7 +186,7 @@ def cvsReader(csvFile_str):
 
 
 def saveFile(fname, in_str):
-	"""Save the string as a text file. Filename is in_str variable."""
+	"""Save the string as a text file. Data is in_str variable."""
 
 	if len(in_str) > 0:
 			tmp_str = ""
