@@ -100,7 +100,7 @@ Each prepared file is to be then to be placed into its associated grade book rep
 
 ### Pushing in Bulk
 
-Each student who has accepted the grade book "assignment" will have a repository that the instructor can access. Sadly, the [GitHub Assistant](http://https://classroom.github.com/assistant) (link: https://classroom.github.com/assistant) will not work to create repositories into which grades may be pushed. Instead, the instructor is to clone each of the grade book "assignment" repositories listed by GitHub Classroom. Grade book files may now be pushed into these repositories by the instructor using the below `bulkPusher.sh` script.
+Each student who has accepted the grade book "assignment" will have a repository that the instructor can access. Sadly, the [GitHub Assistant](http://https://classroom.github.com/assistant) (link: https://classroom.github.com/assistant) will not work to create repositories into which grades may be pushed. Instead, the instructor is to clone each of the grade book "assignment" repositories listed by GitHub Classroom and then copy the individual gradebook files into each repository. Grade book repositories may now be pushed by the instructor using the below `bulkPusher.sh` script.
 
 After completing course grades save a copy of the spreadsheet as a CSV file. Grader-Alert may be executed with the CSV file as the parameter. The resulting files will have to be placed into the individual grade book repositories.
 
