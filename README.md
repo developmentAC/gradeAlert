@@ -52,7 +52,7 @@ To use this Grade-Alert, the student grades are to be kept in a comma separated 
 
 
 
-In a grade book spreadsheet, each row contains the grades of a particular individuals in the course. The columns header provide details of the assignment and type of feedback. The first column **must** contain the name of the student; this information will be used to name the outputted files and serve to inform which output file corresponds with what grade book repository. The rest of the information for a row will be formatted and placed into the outputted file. The CSV formatting for a grade book CSV files is shown below in the table.
+In a grade book spreadsheet, each row contains the grades of the individuals in the course. The columns header provide details of the assignment and type of feedback. The first column **must** contain the name of the student; this information will be used to name the outputted files and serve to inform which output file corresponds with what grade book repository. The rest of the information for a row will be formatted and placed into the outputted file. The CSV formatting for a grade book CSV files is shown below in the table.
 
 
 |Student Name|	Student ID|	Activity 01|	Activity 01 Comments|	Activity 02|	Activity 02 comments|
@@ -61,7 +61,7 @@ In a grade book spreadsheet, each row contains the grades of a particular indivi
 |student2|	x0002|	100|	Excellent|	100|	excellent|
 |student3|	x0003|	100|	Excellent|	100|	excellent|
 |student4|	x0004|	0|	Nothing submitted|	95|	excellent|
-|student5|	x0005|	100|	Excellent|	95|	nothing submitted?|
+|student5|	x0005|	100|	Excellent|	95|	ok|
 |student6|	x0006|	100|	Excellent|	100|	excellent|
 |student7|	x0007|	0|	Nothing submitted|	0|	nothing submitted?|
 
