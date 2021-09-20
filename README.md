@@ -87,7 +87,7 @@ Activity 02 comments : excellent
 
 Activity 03 : 100
 
-Activity 03 comments : yes
+Activity 03 comments : excellent
 
 
 ____
