@@ -144,6 +144,7 @@ ls -l | cut -d " " -f 9 > dirNames
 
 This file is to be edited to contain only the paths to the student grade book repositories. This file is then to be stored in the same root as the repositories so that the `bulkPushers.sh` can find it (and the repository paths it contains) when run.
 
+The contents of the student repositories directory should be similar to the following.
 ```
 repos/gradebook-student1
 repos/gradebook-student2
