@@ -134,7 +134,7 @@ rm mydir
 The file, `dirNames` contains the paths of the repositories to which we push. To conveniently prepare this file, begin with the following command from the directory where the class repositories are stored.
 
 ``` bash
-ls -l | cut -d " " -f10 > dirNames
+ls > dirNames
 ```
 
 This file is to be edited to contain only the paths to the student grade book repositories. This file is then to be stored in the same root as the repositories so that the `bulkPushers.sh` can find it (and the repository paths it contains) when run.
