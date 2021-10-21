@@ -16,13 +16,13 @@ GitHub link: https://github.com/developmentAC/gradeAlert
 ### Table of contents
 * [Overview](#overview)
 * [Tool](#tool)
-* [Usage-At-Terminal](#usage-at-terminal)
+* [Usage At Terminal](#usage-at-terminal)
 * [CSV](#CSV)
 * [Outputted files](#outputted-files)
 * [Placing Gradebook Files](#placing-gradebook-files)
 * [Pushing in Bulk](#pushing-in-bulk)
 * [File Structure](#structure)
-* [A work in progress](#A-work-in-progress)
+* [A Work In Progress](#A-work-in-progress)
 
 
 
@@ -44,8 +44,9 @@ All grades in a course are kept in a CSV spreadsheet. Grade-alert parses each ro
 To run the program in Linux or MacOS, Python3 is necessary. This program is sure to also run in Windows, although this has not been tested.
 
 To process the CSV spreadsheet, `demoGrades_short.csv` (files formats are discussed below), the command is the following: `./gradeAlert.py demoGrades_short.csv`. In addition, online help is available by at the terminal with the command, `./gradeAlert.py -h`.
+To copy the outputted files into their respectful repositories for a bulk push, `./gradeAlert.py -P`
 
-
+*Note: discussion for each of these commands is below.*
 
 
 ### CSV
