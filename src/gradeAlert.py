@@ -4,9 +4,11 @@
 
 #from collections import Counter
 import sys, random, csv, os
+from shutil import copy2
 
-DATE = "10 Sept 2021"
-VERSION = "i"
+
+DATE = "20 Oct 2021"
+VERSION = "ii"
 AUTHOR = "Oliver Bonham-Carter"
 AUTHORMAIL = "obonhamcarter@allegheny.edu"
 THISPROG = sys.argv[0].replace("./","")
@@ -14,6 +16,9 @@ WHATISTHIS_p1 = "\n\tA Grader program: grade csv files are opened,\n\tparsed and
 WHATISTHIS_p2 = "\t Use option '-h' for more glorification about this amazing project!\n"
 
 MYOUTPUT_DIR = "0_out/" # all results are saved in this local directory
+
+PAIRINGFILE = "pairings.txt" # the file containing all information about which gradebook file blongs to what gradebook repository. Note, the names of each the user and the user's gradebook file may not be the same.
+REPOFILE = "dirNames" # file to runt he bulk pusher. Contains path and name of each repository to push.
 
 
 # Bold colour list
@@ -115,19 +120,23 @@ def helper():
 	print("\t"+len(h_str2) * "-")
 	print(h_str2)
 	print("\t"+len(h_str2) * "-")
-	print(printWithColour(BIGreen,f"\t [+] \U0001f600 USAGE: {THISPROG}  myGrades.csv"))
+	print("\tOptions:")
+	print("\t[-H] This page.")
+	print("\t[-P] Place the gradebook files into associated repositories and use a script to push them out.\n")
+	print(printWithColour(BIGreen,f"\t[+] \U0001f600 USAGE: {THISPROG}  myGrades.csv"))
 
 #end of helper()
 
 
 
 def getArguments(argv_list):
-	""" A function to determine what parameters have been entered"""
+	""" A function to determine what parameters have been entered. There are three main options to check for at execution time: the name of the CSV file, if the user wants to push the grade files automatically into their corresponding repositories,  whether the user wants some help.  """
 
 	# print(argv_list)
 
 	param_1 = "CSV" # call for cvsReader()
 	param_2 = "-H" # call for helper()
+	param_3 = "-P" # call for an automatic push
 
 	if len(argv_list) == 0:
 			# Output welcome message
@@ -148,6 +157,11 @@ def getArguments(argv_list):
 			helper()
 			exit()
 
+		if param_3 in i.upper(): # automatically push all gradebook files into their corresponding repositories
+			# print(i)
+			bulkPusher() #function to read a pairing file (containing class names and corresponding repositories), copy gradebook files in to their paired repositories and then push them out
+			exit()
+
 		if param_1 not in i.upper() and param_2 not in i.upper():
 			print(printWithColour(BICyan,WHATISTHIS_p2))
 
@@ -156,6 +170,61 @@ def getArguments(argv_list):
 			begin(csvFile_str)
 			# end of getArguments()
 
+
+def bulkPusher():
+	"""Driver for operations to get gradebook files into their associated repositories, and then pushing them out. """
+	print(printWithColour(BIGreen, f"\t [+] Copying files into associated repositories\n\t\tas defined in {PAIRINGFILE}.\n"))
+# open the PAIRINGFILE
+
+	lines_list = []
+	try:
+		with open(PAIRINGFILE) as file: # open the word file, make a list of words
+			pair_list = [line.replace("\n","").replace(",","").split() for line in file]
+	except FileNotFoundError:
+		print(printWithColour(BIRed,f"\t [-] Missing pairing file: {PAIRINGFILE}"))
+		exit()
+
+	dirNameData_str = "" # we will create a dirNameFile for the successful file copies into repositories. Used by bulkPusher.sh script file.
+
+	for i in range(len(pair_list)):
+
+		thisFile_str = f"{pair_list[i][0]}"
+		thisRepo_str = f"{pair_list[i][1]}"
+
+		print("\t", printWithColour(BICyan,f"{MYOUTPUT_DIR}{thisFile_str}"))
+		print("\t\t --> ", printWithColour(BIGreen,f"{thisRepo_str}"))
+
+		# send the file to its repo as defined in the pairing file
+		success_Bol = copyThisFile(thisFile_str,thisRepo_str)
+		if success_Bol == True:
+			dirNameData_str = f"{dirNameData_str}\n{thisRepo_str}"
+	saveDirNameFile(dirNameData_str)
+	#end of bulkPusher()
+
+
+def saveDirNameFile(in_str):
+	"""Function to save the dirNames file which is used by bulkpusher script for
+	pushing repositories. Contains the names and path of each repository"""
+	# print(in_str)
+
+	f = open(REPOFILE,"w")
+	f.write(in_str)
+	f.close()
+	print(printWithColour(BIYellow,f"\n\t [+] Saving file for bulkPusher: {REPOFILE}"))
+	#end of saveDirNameFile()
+
+def copyThisFile(src_str, dst_str):
+	"""Function to copy a file to a destiation"""
+	src_str = f"{MYOUTPUT_DIR}{src_str}"
+
+	try:
+		copy2(src_str, dst_str)
+		return True # successful copy
+	except IsADirectoryError:
+		print(printWithColour(BIRed, f"\n\t [-] Copy error. Missing directory? {src_str} --> {dst_str}\n"))
+		# pass
+		return False # oops! copy failure. :-(
+#end of copyThisFile()
 
 
 

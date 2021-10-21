@@ -1,5 +1,5 @@
 ##### Grade-Alert:
-##### Date: 11 Sept 2021
+##### Date: 20 Oct 2021
 ##### Oliver Bonham-Carter, [Allegheny College](https://allegheny.edu/)
 ##### email: obonhamcarter@allegheny.edu
 
@@ -19,6 +19,7 @@ GitHub link: https://github.com/developmentAC/gradeAlert
 * [Usage-At-Terminal](#usage-at-terminal)
 * [CSV](#CSV)
 * [Outputted files](#outputted-files)
+* [Placing Gradebook Files](#placing-gradebook-files)
 * [Pushing in Bulk](#pushing-in-bulk)
 * [A work in progress](#A-work-in-progress)
 
@@ -27,7 +28,7 @@ GitHub link: https://github.com/developmentAC/gradeAlert
 ### Overview
 GitHub Classroom is an excellent resource to handle work repositories for a course of many students. Each student, after "accepting" an assignment is issued a unique repository in which work can be completed and pushed to the instructor.
 
-Here, we suggest that GitHub Classroom be used to report grades to each student who has a grade book "assignment" repository. The instructor, who has access to this repository, places a file containing grades and feedback into this repository for the student to consult.
+Here, we suggest that GitHub Classroom be used to report grades to each student who has a grade book "assignment" repository. The instructor, who has access to this repository, places a file containing grades and feedback into this repository for the student to consult. With a little setup and configuration, Grade-Alert can place each gradebook file into its corresponding repository. This step saves the user from having to remember which file goes into what repository.  
 
 ![Demo](graphics/gradeAlert_demo.gif)
 
@@ -90,6 +91,71 @@ ____
 ```
 
 Each prepared file is to be then to be placed into its associated grade book repository and is pushed out for the student.
+
+### Placing Gradebook Files
+Using option `-P`, the user can have Grade-Alert copy the gradebook markdown files into their associated repositories for bulk pushing (discussed below).
+
+###### Usage
+
+`./gradeAlert.py -P`
+
+ For this step, the File `pairings.txt` must be in the same directory as the `gradeAlert.py`. The pairing files lists the files (*left*) separated by a comma, and the repositories (*right*) into which the file is to be copied before pushing.
+
+Shown below are the contents of `pairings.txt` for the accompanying gradebook spreadsheet example.
+
+
+```
+student1_gradebook.md, studentGradeBook_Repos/gradebook_A/
+student2_gradebook.md, studentGradeBook_Repos/gradebook_B/
+student3_gradebook.md, studentGradeBook_Repos/gradebook_C/
+student4_gradebook.md, studentGradeBook_Repos/gradebook_D/
+student5_gradebook.md, studentGradeBook_Repos/gradebook_E/
+student6_gradebook.md, studentGradeBook_Repos/gradebook_F/
+student7_gradebook.md, studentGradeBook_Repos/gradebook_G/
+```
+
+For his or her own requirements, the user is to modify this file, which is essentially a `csv` file that could be created by a spreadsheet such as [LibreOffice](https://www.libreoffice.org/) Calc. If the pairing file is not present with the option `-P` is invoked, then an error message will result and end the Grade-Alert execution.
+
+
+###### Output
+The output of this copying-job is shown below.
+
+
+```
+[+] Copying files into associated repositories
+ as defined in pairings.txt.
+
+0_out/student1_gradebook.md
+	-->  studentGradeBook_Repos/gradebook_A/
+0_out/student2_gradebook.md
+	-->  studentGradeBook_Repos/gradebook_B/
+0_out/student3_gradebook.md
+	-->  studentGradeBook_Repos/gradebook_C/
+0_out/student4_gradebook.md
+	-->  studentGradeBook_Repos/gradebook_D/
+0_out/student5_gradebook.md
+	-->  studentGradeBook_Repos/gradebook_E/
+0_out/student6_gradebook.md
+	-->  studentGradeBook_Repos/gradebook_F/
+0_out/student7_gradebook.md
+	-->  studentGradeBook_Repos/gradebook_G/
+
+[+] Saving file for bulkPusher: dirNames
+```
+
+
+Note that a new file, `dirNames` will be created from this copying operation, shown below.
+
+```
+studentGradeBook_Repos/gradebook_A/
+studentGradeBook_Repos/gradebook_B/
+studentGradeBook_Repos/gradebook_C/
+studentGradeBook_Repos/gradebook_D/
+studentGradeBook_Repos/gradebook_E/
+studentGradeBook_Repos/gradebook_F/
+```
+
+The `dirNames` file may be used with the `bulkPusher.sh` script (explained below) for bulk pushing using `git`. We note that this file is especially useful since it only lists the successful copies of gradebook files into corresponding repositories. If an error occurred during copying, then the program would skip the repository and the `dirNames` would have no listing for the offending repository.
 
 
 
