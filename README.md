@@ -21,6 +21,7 @@ GitHub link: https://github.com/developmentAC/gradeAlert
 * [Outputted files](#outputted-files)
 * [Placing Gradebook Files](#placing-gradebook-files)
 * [Pushing in Bulk](#pushing-in-bulk)
+* [File Structure](#structure)
 * [A work in progress](#A-work-in-progress)
 
 
@@ -214,7 +215,42 @@ repos/dirNames
 repos/bulkPusher.sh
 ```
 
-In a convenient setup, the repositories, the files `dirNames` and `bulkPusher.sh` are stored in the same location.
+In a convenient setup, the repositories, the files `dirNames` and `bulkPusher.sh` are to stored in root directory. The structure of the file system is discussed below.
+
+
+### Structure
+
+The files are to be arranged in the following way for a typical usage. Note, this arrangement shows the demonstration files.
+
+```
+
+ ./0_out/
+   - ./student1_gradebook.md
+   - ./student2_gradebook.md
+   - ./student3_gradebook.md
+   - ./student4_gradebook.md
+   - ./student5_gradebook.md
+   - ./student6_gradebook.md
+   - ./student7_gradebook.md
+
+ ./studentGradeBook_Repos/
+   - gradebook_A/
+   - gradebook_B/
+   - gradebook_C/
+   - gradebook_D/
+   - gradebook_E/
+   - gradebook_F/
+   - gradebook_G/
+
+ - ./bulkPusher.sh
+ - ./demoGrades_short.csv
+ - ./dirNames
+ - ./gradeAlert.py
+ - ./pairings.txt
+
+```
+
+*Note: As the user uses Grade-Alert to handle gradebook repositories and markdown files, having the files in the above order will help to simplify the commands to use them.*
 
 ### A work in progress
 
