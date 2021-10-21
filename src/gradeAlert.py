@@ -122,7 +122,7 @@ def helper():
 	print("\t"+len(h_str2) * "-")
 	print("\tOptions:")
 	print("\t[-H] This page.")
-	print("\t[-P] Place the gradebook files into associated repositories and use a script to push them out.\n")
+	print("\t[-P] Place the gradebook files into associated repositories\n\t     and use a script to push them out.\n")
 	print(printWithColour(BIGreen,f"\t[+] \U0001f600 USAGE: {THISPROG}  myGrades.csv"))
 
 #end of helper()
