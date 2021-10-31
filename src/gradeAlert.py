@@ -179,7 +179,9 @@ def bulkPusher():
 	lines_list = []
 	try:
 		with open(PAIRINGFILE) as file: # open the word file, make a list of words
-			pair_list = [line.replace("\n","").replace(",","").split() for line in file]
+			# pair_list = [line.replace("\n","").replace(",","").split(",") for line in file]
+			pair_list = [line.replace("\n","").split(",") for line in file]
+			print(f"pair_list: {pair_list}")
 	except FileNotFoundError:
 		print(printWithColour(BIRed,f"\t [-] Missing pairing file: {PAIRINGFILE}"))
 		exit()
@@ -187,6 +189,8 @@ def bulkPusher():
 	dirNameData_str = "" # we will create a dirNameFile for the successful file copies into repositories. Used by bulkPusher.sh script file.
 
 	for i in range(len(pair_list)):
+
+		print(f"::: {i}")
 
 		thisFile_str = f"{pair_list[i][0]}"
 		thisRepo_str = f"{pair_list[i][1]}"
@@ -220,10 +224,12 @@ def copyThisFile(src_str, dst_str):
 	try:
 		copy2(src_str, dst_str)
 		return True # successful copy
-	except IsADirectoryError:
-		print(printWithColour(BIRed, f"\n\t [-] Copy error. Missing directory? {src_str} --> {dst_str}\n"))
+	except (IsADirectoryError, FileNotFoundError) as e:
+		print(printWithColour(BIRed, f"\n\t [-] Copy error ({e}).\n\t\t Missing directory? {src_str} --> {dst_str}\n"))
 		# pass
 		return False # oops! copy failure. :-(
+
+
 #end of copyThisFile()
 
 
