@@ -1,5 +1,5 @@
 ##### Grade-Alert:
-##### Date: 20 Oct 2021
+##### Date: 31 October 2021
 ##### Oliver Bonham-Carter, [Allegheny College](https://allegheny.edu/)
 ##### email: obonhamcarter@allegheny.edu
 
@@ -29,7 +29,7 @@ GitHub link: https://github.com/developmentAC/gradeAlert
 ### Overview
 GitHub Classroom is an excellent resource to handle work repositories for a course of many students. Each student, after "accepting" an assignment is issued a unique repository in which work can be completed and pushed to the instructor.
 
-Here, we suggest that GitHub Classroom be used to report grades to each student who has a grade book "assignment" repository. The instructor, who has access to this repository, places a file containing grades and feedback into this repository for the student to consult. With a little setup and configuration, Grade-Alert can place each gradebook file into its corresponding repository. This step saves the user from having to remember which file goes into what repository.  
+Here, we suggest that GitHub Classroom be used to report grades to each student who has a grade book "assignment" repository. The instructor, who has access to this repository, places a file containing grades and feedback into this repository for the student to consult. With a little setup and configuration, Grade-Alert can place each gradebook file into its corresponding repository. This step saves the user from having to remember which file goes into what repository. All parts of this project have been written to run in Linux or MacOS operating systems. If you are using Windows, then parts of the project (such as file copying) may not work as expected.
 
 ![Demo](graphics/gradeAlert_demo.gif)
 
@@ -163,7 +163,12 @@ The `dirNames` file may be used with the `bulkPusher.sh` script (explained below
 
 ### Pushing in Bulk
 
-Each student who has accepted the grade book "assignment" will have a repository that the instructor can access. Sadly, the [GitHub Assistant](http://https://classroom.github.com/assistant) (link: https://classroom.github.com/assistant) will not work to create repositories into which grades may be pushed. Instead, the instructor is to clone each of the grade book "assignment" repositories listed by GitHub Classroom and then copy the individual gradebook files into each repository. Grade book repositories may now be pushed by the instructor using the below `bulkPusher.sh` script.
+Each student who has accepted the grade book "assignment" will have a repository that the instructor can access. Sadly, the [GitHub Assistant](http://https://classroom.github.com/assistant) (link: https://classroom.github.com/assistant) will not work to create repositories into which grades may be pushed. Instead, the instructor is to clone each of the grade book "assignment" repositories listed by GitHub Classroom and then copy the individual gradebook files into each repository.
+
+The creation of multiple gradebook repositories may be done by adding the `git clone` statements into a script file such as the included file, `repoBuilder.sh` and then running the script using, `sh repoBuilder.sh`. The user is advised to edit this script file as necessary -- there are two lines that have been added create a directory called `student_repos/` and then to copy in all repositories starting with `gradebook_` into the directory.
+
+
+Grade book repositories may now be pushed by the instructor using the below `bulkPusher.sh` script.
 
 After completing course grades save a copy of the spreadsheet as a CSV file. Grader-Alert may be executed with the CSV file as the parameter. The resulting files will have to be placed into the individual grade book repositories.
 
