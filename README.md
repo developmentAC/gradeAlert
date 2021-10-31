@@ -253,6 +253,7 @@ The files are to be arranged in the following way for a typical usage. Note, thi
  - ./dirNames
  - ./gradeAlert.py
  - ./pairings.txt
+ - ./repoBuilder.sh
 
 ```
 
