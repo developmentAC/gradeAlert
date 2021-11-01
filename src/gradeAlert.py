@@ -7,7 +7,7 @@ import sys, random, csv, os
 from shutil import copy2
 
 
-DATE = "20 Oct 2021"
+DATE = "31 Oct 2021"
 VERSION = "ii"
 AUTHOR = "Oliver Bonham-Carter"
 AUTHORMAIL = "obonhamcarter@allegheny.edu"
@@ -181,7 +181,7 @@ def bulkPusher():
 		with open(PAIRINGFILE) as file: # open the word file, make a list of words
 			# pair_list = [line.replace("\n","").replace(",","").split(",") for line in file]
 			pair_list = [line.replace("\n","").split(",") for line in file]
-			print(f"pair_list: {pair_list}")
+			# print(f"pair_list: {pair_list}")
 	except FileNotFoundError:
 		print(printWithColour(BIRed,f"\t [-] Missing pairing file: {PAIRINGFILE}"))
 		exit()
@@ -190,7 +190,7 @@ def bulkPusher():
 
 	for i in range(len(pair_list)):
 
-		print(f"::: {i}")
+		print("  ", printWithColour(BIYellow,f"Number : {i}"))
 
 		thisFile_str = f"{pair_list[i][0]}"
 		thisRepo_str = f"{pair_list[i][1]}"
