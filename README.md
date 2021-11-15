@@ -1,5 +1,5 @@
-##### Grade-Alert:
-##### Date: 31 October 2021
+##### GradeAlert
+##### Date: 15 November 2021
 ##### Oliver Bonham-Carter, [Allegheny College](https://allegheny.edu/)
 ##### email: obonhamcarter@allegheny.edu
 
@@ -22,7 +22,8 @@ GitHub link: https://github.com/developmentAC/gradeAlert
 * [Placing Gradebook Files](#placing-gradebook-files)
 * [Pushing in Bulk](#pushing-in-bulk)
 * [File Structure](#structure)
-* [A Work In Progress](#A-work-in-progress)
+* [Summary of Commands](summary-of-commands)
+* [A Work In Progress](#a-work-in-progress)
 
 
 
@@ -258,6 +259,23 @@ The files are to be arranged in the following way for a typical usage. Note, thi
 ```
 
 *Note: As the user uses Grade-Alert to handle gradebook repositories and markdown files, having the files in the above order will help to simplify the commands to use them.*
+
+
+### Summary of Commands
+
+ - Be sure that you have all student repositories in a directory called, `student_repos/`. Note: is is recommended that these repositories be created by copying all the `git clone` statements into a script file so that the repositories can be automatically created with each grade-update. Once the grades have been updated, then these repositories could be removed from the working directory to reduce clutter. Just an idea.
+
+ - Save a gradebook file in a CSV file format (ex: `mygradebook.csv`).
+
+ - Be sure that the `pairings.txt` file is present in the local directory and has been correctly formatted. For example, each line has the following format:
+  - `gradeBookFile,repositoryPath`
+  - Note: the line will look like: `studentName_gradebook.md,student_repos/gradebook-StudentName`)
+
+ - Run `python3 gradeAlert.py mygradebook.csv` (this makes the gradebook files from the rows of the CSV file and are stored in `0_out/`).
+
+ - Run `python3 gradeAlert.py -p` (this copies the gradebook files into their associated repositories which are defined in the `pairing.txt` file.)
+ - Use `bulkPusher.sh` to push out all updated files to the gradebook repositories.
+
 
 ### A work in progress
 
