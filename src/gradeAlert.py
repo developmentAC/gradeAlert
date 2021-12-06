@@ -239,6 +239,11 @@ def cvsReader(csvFile_str):
 	tmp_str = "" # used hold a string of the cvs row
 	topRow_Bol = False
 
+	if os.path.exists(csvFile_str) == False:
+		print(printWithColour(BIRed,"\t Error opening File. "))
+		exit()
+
+
 	with open(csvFile_str) as csv_file:
 		csv_reader = csv.reader(csv_file, delimiter=',')
 
@@ -255,6 +260,7 @@ def cvsReader(csvFile_str):
 				tmp_str = tmp_str + "\n____\n\n"
 				print(printWithColour(BICyan,f"\t [+] Processing : {row_list[0]}")) # the student name from current row
 				saveFile(row_list[0], tmp_str) # student name, data
+
 
 		exit()
 		#end of cvsReader()
