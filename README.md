@@ -263,7 +263,7 @@ The files are to be arranged in the following way for a typical usage. Note, thi
 
 ### Summary of Commands
 
- - Be sure that you have all student repositories in a directory called, `student_repos/`. Note: is is recommended that these repositories be created by copying all the `git clone` statements into a script file so that the repositories can be automatically created with each grade-update. Once the grades have been updated, then these repositories could be removed from the working directory to reduce clutter. Just an idea.
+ - Be sure that you have all student repositories in a directory called, `student_repos/`. Note: it is recommended that these repositories be created by copying all the `git clone` statements into a script file so that the repositories can be automatically created with each grade-update. Once the grades have been updated, then these repositories could be removed from the working directory to reduce clutter. Just an idea.
 
  - Save a gradebook file in a CSV file format (ex: `mygradebook.csv`).
 
