@@ -18,7 +18,7 @@ WHATISTHIS_p2 = "\t Use option '-h' for more glorification about this amazing pr
 MYOUTPUT_DIR = "0_out/" # all results are saved in this local directory
 
 PAIRINGFILE = "pairings.txt" # the file containing all information about which gradebook file blongs to what gradebook repository. Note, the names of each the user and the user's gradebook file may not be the same.
-REPOFILE = "dirNames" # file to runt he bulk pusher. Contains path and name of each repository to push.
+REPOFILE = "dirNames" # file to run the bulk pusher. Contains path and name of each repository to push.
 
 
 # Bold colour list
@@ -160,11 +160,11 @@ def getArguments(argv_list):
 		if param_3 in i.upper(): # automatically push all gradebook files into their corresponding repositories
 			# print(i)
 			bulkPusher() #function to read a pairing file (containing class names and corresponding repositories), copy gradebook files in to their paired repositories and then push them out
+			print(printWithColour(BIGreen,f"\t [+] Your are now ready to use bulkPusher.sh script\n\t     with the following command."),printWithColour(BIYellow,"\n\t     sh bulkPusher.sh"))
 			exit()
 
 		if param_1 not in i.upper() and param_2 not in i.upper():
 			print(printWithColour(BICyan,WHATISTHIS_p2))
-
 
 		if csvFile_str != None:
 			begin(csvFile_str)
@@ -214,7 +214,7 @@ def saveDirNameFile(in_str):
 	f = open(REPOFILE,"w")
 	f.write(in_str)
 	f.close()
-	print(printWithColour(BIYellow,f"\n\t [+] Saving file for bulkPusher: {REPOFILE}"))
+	print(printWithColour(BIBlue,f"\n\t [+] Saving file for bulkPusher: {REPOFILE}"))
 	#end of saveDirNameFile()
 
 def copyThisFile(src_str, dst_str):
