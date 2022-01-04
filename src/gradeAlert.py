@@ -7,7 +7,7 @@ import sys, random, csv, os
 from shutil import copy2
 
 
-DATE = "31 Oct 2021"
+DATE = "4 Jan 2022"
 VERSION = "ii"
 AUTHOR = "Oliver Bonham-Carter"
 AUTHORMAIL = "obonhamcarter@allegheny.edu"
@@ -118,12 +118,11 @@ def helper():
 	print("\t"+len(h_str2) * "-")
 	print(printWithColour(BIYellow,h_str1))
 	print("\t"+len(h_str2) * "-")
-	print(printWithColour(BIBlue,h_str2))
-	# print(h_str2)
+	print(h_str2)
 	print("\t"+len(h_str2) * "-")
 	print("\tOptions:")
-	print(printWithColour(BICyan,"\t[-H]"),printWithColour(BIYellow,"This page."))
-	print(printWithColour(BICyan,"\t[-P]"),printWithColour(BIYellow,"Place the gradebook files into associated repositories\n\t     and use a script to push them out.\n"))
+	print("\t[-H] This page.")
+	print("\t[-P] Place the gradebook files into associated repositories\n\t     and use a script to push them out.\n")
 	print(printWithColour(BIGreen,f"\t[+] \U0001f600 USAGE: {THISPROG}  myGrades.csv"))
 
 #end of helper()
@@ -240,11 +239,6 @@ def cvsReader(csvFile_str):
 	tmp_str = "" # used hold a string of the cvs row
 	topRow_Bol = False
 
-	if os.path.exists(csvFile_str) == False:
-		print(printWithColour(BIRed,"\t Error opening File. "))
-		exit()
-
-
 	with open(csvFile_str) as csv_file:
 		csv_reader = csv.reader(csv_file, delimiter=',')
 
@@ -262,8 +256,6 @@ def cvsReader(csvFile_str):
 				print(printWithColour(BICyan,f"\t [+] Processing : {row_list[0]}")) # the student name from current row
 				saveFile(row_list[0], tmp_str) # student name, data
 
-
-		exit()
 		#end of cvsReader()
 
 
@@ -309,6 +301,7 @@ def begin(csvFile_str):
 	"""Driver function"""
 	print(printWithColour(BIYellow,f"\t [+] File to open: {csvFile_str}\n"))
 	cvsReader(csvFile_str)
+	print(printWithColour(BIGreen,f"\t [+] If your pairs.txt has been set up,\n\t     you can now automatically update your\n\t     student grade book repositories with the \n\t     below command.\n\t"),printWithColour(BIYellow,f"\n\t python3 {THISPROG} -p"))
 #end of begin()
 
 
