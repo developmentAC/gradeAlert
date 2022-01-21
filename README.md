@@ -283,5 +283,5 @@ Check back often to see the evolution of this project!! Grade-Alert is a work-in
 
 Otherwise, please create an Issue for bugs or errors. Since I am a teaching faculty member at Allegheny College, I may not have all the time necessary to quickly fix the bugs and so I would be very happy to have any help that I can get from the OpenSource community for any technological insight. Much thanks in advance. I hope that this project helps you to conveniently publish your course grades. 
 
-If you appreciate this project, please consider clicking the project's _Star_. 
+If you appreciate this project, please consider clicking the project's _Star_ button. 
 :-)
