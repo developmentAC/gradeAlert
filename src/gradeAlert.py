@@ -12,7 +12,15 @@ VERSION = "ii"
 AUTHOR = "Oliver Bonham-Carter"
 AUTHORMAIL = "obonhamcarter@allegheny.edu"
 THISPROG = sys.argv[0].replace("./","")
-WHATISTHIS_p1 = "\n\tA Grader program: grade csv files are opened,\n\tparsed and files for each row are created.\n\tThen, place these files into GitHub Classroom\n\trepositories to report grades."
+
+WHATISTHIS_p1 = f"""
+\t {THISPROG}
+\t A gradebook utility for teachers: the tool creates small
+\t files from the rows of grade information in a grade book
+\t spreadsheets. These files may then be diffused to student
+\t accounts by GitHub to keep students in contact with their
+\t class performance.
+"""
 WHATISTHIS_p2 = "\t Use option '-h' for more glorification about this amazing project!\n"
 
 MYOUTPUT_DIR = "0_out/" # all results are saved in this local directory
