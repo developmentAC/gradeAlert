@@ -108,14 +108,16 @@ Shown below are the contents of `pairings.txt` for the accompanying gradebook sp
 
 
 ```
-student1_gradebook.md, studentGradeBook_Repos/gradebook_A/
-student2_gradebook.md, studentGradeBook_Repos/gradebook_B/
-student3_gradebook.md, studentGradeBook_Repos/gradebook_C/
-student4_gradebook.md, studentGradeBook_Repos/gradebook_D/
-student5_gradebook.md, studentGradeBook_Repos/gradebook_E/
-student6_gradebook.md, studentGradeBook_Repos/gradebook_F/
-student7_gradebook.md, studentGradeBook_Repos/gradebook_G/
+student1_gradebook.md,studentGradeBook_Repos/gradebook_A/
+student2_gradebook.md,studentGradeBook_Repos/gradebook_B/
+student3_gradebook.md,studentGradeBook_Repos/gradebook_C/
+student4_gradebook.md,studentGradeBook_Repos/gradebook_D/
+student5_gradebook.md,studentGradeBook_Repos/gradebook_E/
+student6_gradebook.md,studentGradeBook_Repos/gradebook_F/
+student7_gradebook.md,studentGradeBook_Repos/gradebook_G/
 ```
+Note: Ne sure to remove all spaces in the `pairings.txt` file.
+
 
 For his or her own requirements, the user is to modify this file, which is essentially a `csv` file that could be created by a spreadsheet such as [LibreOffice](https://www.libreoffice.org/) Calc. If the pairing file is not present when the option `-P` is invoked, then an error message will result and end the Grade-Alert execution.
 
