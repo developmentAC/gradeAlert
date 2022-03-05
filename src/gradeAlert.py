@@ -7,7 +7,7 @@ import sys, random, csv, os
 from shutil import copy2
 
 
-DATE = "4 Jan 2022"
+DATE = "4 March 2022"
 VERSION = "ii"
 AUTHOR = "Oliver Bonham-Carter"
 AUTHORMAIL = "obonhamcarter@allegheny.edu"
@@ -197,19 +197,21 @@ def bulkPusher():
 	dirNameData_str = "" # we will create a dirNameFile for the successful file copies into repositories. Used by bulkPusher.sh script file.
 
 	for i in range(len(pair_list)):
+		# print(printWithColour(BIYellow,f"____ pair_list[i] = {pair_list[i]}, {len(pair_list[i])}"))
+		if len(pair_list[i][0]) != 0: # are there two pieces of information in this list?
 
-		print("  ", printWithColour(BIYellow,f"Number : {i}"))
+			print("  ", printWithColour(BIYellow,f"Number : {i}"))
 
-		thisFile_str = f"{pair_list[i][0]}"
-		thisRepo_str = f"{pair_list[i][1]}"
+			thisFile_str = f"{pair_list[i][0]}"
+			thisRepo_str = f"{pair_list[i][1]}"
 
-		print("\t", printWithColour(BICyan,f"{MYOUTPUT_DIR}{thisFile_str}"))
-		print("\t\t --> ", printWithColour(BIGreen,f"{thisRepo_str}"))
+			print("\t", printWithColour(BICyan,f"{MYOUTPUT_DIR}{thisFile_str}"))
+			print("\t\t --> ", printWithColour(BIGreen,f"{thisRepo_str}"))
 
-		# send the file to its repo as defined in the pairing file
-		success_Bol = copyThisFile(thisFile_str,thisRepo_str)
-		if success_Bol == True:
-			dirNameData_str = f"{dirNameData_str}\n{thisRepo_str}"
+			# send the file to its repo as defined in the pairing file
+			success_Bol = copyThisFile(thisFile_str,thisRepo_str)
+			if success_Bol == True:
+				dirNameData_str = f"{dirNameData_str}\n{thisRepo_str}"
 	saveDirNameFile(dirNameData_str)
 	#end of bulkPusher()
 
