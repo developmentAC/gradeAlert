@@ -7,7 +7,7 @@ import sys, random, csv, os
 from shutil import copy2
 
 
-DATE = "4 March 2022"
+DATE = "27 March 2022"
 VERSION = "ii"
 AUTHOR = "Oliver Bonham-Carter"
 AUTHORMAIL = "obonhamcarter@allegheny.edu"
@@ -234,7 +234,7 @@ def copyThisFile(src_str, dst_str):
 	try:
 		copy2(src_str, dst_str)
 		return True # successful copy
-	except (IsADirectoryError, FileNotFoundError) as e:
+	except (IsADirectoryError, FileNotFoundError, NotADirectoryError) as e:
 		print(printWithColour(BIRed, f"\n\t [-] Copy error ({e}).\n\t\t Missing directory? {src_str} --> {dst_str}\n"))
 		# pass
 		return False # oops! copy failure. :-(
