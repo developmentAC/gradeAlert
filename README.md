@@ -1,5 +1,5 @@
 ##### GradeAlert
-##### Date: 15 November 2021
+##### Date: 2 November 2022
 ##### Oliver Bonham-Carter, [Allegheny College](https://allegheny.edu/)
 ##### email: obonhamcarter@allegheny.edu
 
@@ -116,7 +116,7 @@ student5_gradebook.md,studentGradeBook_Repos/gradebook_E/
 student6_gradebook.md,studentGradeBook_Repos/gradebook_F/
 student7_gradebook.md,studentGradeBook_Repos/gradebook_G/
 ```
-Note: Be sure to remove all spaces in the `pairings.txt` file.
+__Note: Be sure to remove all spaces in the `pairings.txt` file.__
 
 
 For his or her own requirements, the user is to modify this file, which is essentially a `csv` file that could be created by a spreadsheet such as [LibreOffice](https://www.libreoffice.org/) Calc. If the pairing file is not present when the option `-P` is invoked, then an error message will result and end the Grade-Alert execution.
