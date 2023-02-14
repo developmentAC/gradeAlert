@@ -1,5 +1,5 @@
 ##### GradeAlert
-##### Date: 2 November 2022
+##### Date: 14 Feb 2023
 ##### Oliver Bonham-Carter, [Allegheny College](https://allegheny.edu/)
 ##### email: obonhamcarter@allegheny.edu
 
