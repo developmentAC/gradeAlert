@@ -102,10 +102,7 @@ Using option `-P`, the user can have Grade-Alert copy the gradebook markdown fil
 
 `./gradeAlert.py -P`
 
- For this step, the File `pairings.txt` must be in the same directory as the `gradeAlert.py`. The pairing files lists the files (*left*) separated by a comma, and the repositories (*right*) into which the file is to be copied before pushing.
-
-Shown below are the contents of `pairings.txt` for the accompanying gradebook spreadsheet example.
-
+ For this step, the File `pairings.txt` must be in the same directory as the `gradeAlert.py`. The pairing files lists the files (*left*) separated by a comma, and the repositories (*right*) into which the file is to be copied before pushing. Shown below are the contents of `pairings.txt` for the accompanying gradebook spreadsheet example.
 
 ```
 student1_gradebook.md,studentGradeBook_Repos/gradebook_A/
@@ -116,6 +113,12 @@ student5_gradebook.md,studentGradeBook_Repos/gradebook_E/
 student6_gradebook.md,studentGradeBook_Repos/gradebook_F/
 student7_gradebook.md,studentGradeBook_Repos/gradebook_G/
 ```
+
+After running `gradeAlert` on a `CSV` file, you can create an instant listing of gradebookfiles which are placed in `pairings.txt`. Please use the following bash command for this task. 
+```
+ls -l | cut -d " " -f 11 | sort | uniq > pairings.txt
+```
+
 __Note: Be sure to remove all spaces in the `pairings.txt` file.__
 
 
