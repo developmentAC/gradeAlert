@@ -7,7 +7,7 @@ import sys, random, csv, os
 from shutil import copy2
 
 
-DATE = "26 May 2022"
+DATE = "15 Feb 2023"
 VERSION = "ii"
 AUTHOR = "Oliver Bonham-Carter"
 AUTHORMAIL = "obonhamcarter@allegheny.edu"
@@ -168,7 +168,7 @@ def getArguments(argv_list):
 		if param_3 in i.upper(): # automatically push all gradebook files into their corresponding repositories
 			# print(i)
 			bulkPusher() #function to read a pairing file (containing class names and corresponding repositories), copy gradebook files in to their paired repositories and then push them out
-			print(printWithColour(BIGreen,f"\t [+] You are now ready to use bulkPusher.sh script\n\t     with the following command."),printWithColour(BIYellow,"\n\t     sh bulkPusher.sh"))
+			print(printWithColour(BIGreen,f"\t [+] You are now ready to use bulkPusher.sh script\n\t     with the below command."),printWithColour(BIYellow,"\n\t sh bulkPusher.sh"))
 			exit()
 
 		if param_1 not in i.upper() and param_2 not in i.upper():
@@ -239,10 +239,7 @@ def copyThisFile(src_str, dst_str):
 		# pass
 		return False # oops! copy failure. :-(
 
-
 #end of copyThisFile()
-
-
 
 def cvsReader(csvFile_str):
 	"""Function to open csv file and parse contents"""
