@@ -237,13 +237,13 @@ The files are to be arranged in the following way for a typical usage. Note, thi
 ```
 
  ./0_out/
-   - ./student1_gradebook.md
-   - ./student2_gradebook.md
-   - ./student3_gradebook.md
-   - ./student4_gradebook.md
-   - ./student5_gradebook.md
-   - ./student6_gradebook.md
-   - ./student7_gradebook.md
+   - student1_gradebook.md
+   - student2_gradebook.md
+   - student3_gradebook.md
+   - student4_gradebook.md
+   - student5_gradebook.md
+   - student6_gradebook.md
+   - student7_gradebook.md
 
  ./studentGradeBook_Repos/
    - gradebook_A/
@@ -253,13 +253,14 @@ The files are to be arranged in the following way for a typical usage. Note, thi
    - gradebook_E/
    - gradebook_F/
    - gradebook_G/
-
- - ./bulkPusher.sh
- - ./demoGrades_short.csv
- - ./dirNames
- - ./gradeAlert.py
- - ./pairings.txt
- - ./repoBuilder.sh
+   
+ ./
+ - bulkPusher.sh
+ - demoGrades_short.csv
+ - dirNames
+ - gradeAlert.py
+ - pairings.txt
+ - repoBuilder.sh
 
 ```
 
