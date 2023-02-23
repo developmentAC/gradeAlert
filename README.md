@@ -93,7 +93,7 @@ ____
 
 ```
 
-Each prepared file is to be then to be placed into its associated grade book repository and is pushed out for the student.
+Each prepared file is then to be placed into its associated grade book repository and is pushed out for the student.
 
 ### Placing Gradebook Files
 Using option `-P`, the user can have Grade-Alert copy the gradebook markdown files into their associated repositories for bulk pushing (discussed below).
