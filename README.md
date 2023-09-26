@@ -49,6 +49,38 @@ To copy the outputted files into their respectful repositories for a bulk push, 
 
 *Note: discussion for each of these commands is below.*
 
+### Set up the students' grade book repositoryies
+
+GradeAlert works to copy grade book reports from the grade spreadsheet into GitHub repositories to be pushed.
+The students' repositories must first be created. It is recommended that a script be used to create pull the
+repository for each student in the class. 
+
+Assume that the ssh URLs for cloning grade book repository from GitHub are the following; 
+
+```
+git clone git@github.com:CMPSC-305-Allegheny-College-Fall-2023/grade-book-student1.git
+git clone git@github.com:CMPSC-305-Allegheny-College-Fall-2023/grade-book-student2.git
+git clone git@github.com:CMPSC-305-Allegheny-College-Fall-2023/grade-book-student3.git
+git clone git@github.com:CMPSC-305-Allegheny-College-Fall-2023/grade-book-student4.git
+```
+
+Place each `git clone` line in a batch file `repoBuilder.sh` to automate the cloning process
+of these repositories.
+
+A sample `repoBuilder.sh` takes the following form.
+
+```
+git clone git@github.com:CMPSC-305-Allegheny-College-Fall-2023/grade-book-student1.git
+git clone git@github.com:CMPSC-305-Allegheny-College-Fall-2023/grade-book-student2.git
+git clone git@github.com:CMPSC-305-Allegheny-College-Fall-2023/grade-book-student3.git
+git clone git@github.com:CMPSC-305-Allegheny-College-Fall-2023/grade-book-student4.git
+
+mkdir student_repos
+mv grade-book* student_repos/
+```
+
+Note that there is a bash line to move all cloned repositories into a created directory 
+called `student_repos`.
 
 ### CSV
 
@@ -104,14 +136,15 @@ Using option `-P`, the user can have Grade-Alert copy the gradebook markdown fil
 
  For this step, the File `pairings.txt` must be in the same directory as the `gradeAlert.py`. The pairing files lists the files (*left*) separated by a comma, and the repositories (*right*) into which the file is to be copied before pushing. Shown below are the contents of `pairings.txt` for the accompanying gradebook spreadsheet example.
 
+grade-book-student1
 ```
-student1_gradebook.md,studentGradeBook_Repos/gradebook_A/
-student2_gradebook.md,studentGradeBook_Repos/gradebook_B/
-student3_gradebook.md,studentGradeBook_Repos/gradebook_C/
-student4_gradebook.md,studentGradeBook_Repos/gradebook_D/
-student5_gradebook.md,studentGradeBook_Repos/gradebook_E/
-student6_gradebook.md,studentGradeBook_Repos/gradebook_F/
-student7_gradebook.md,studentGradeBook_Repos/gradebook_G/
+student1_gradebook.md,student_repos/grade-book-student1/
+student2_gradebook.md,student_repos/grade-book-student2/
+student3_gradebook.md,student_repos/grade-book-student3/
+student4_gradebook.md,student_repos/grade-book-student4/
+student5_gradebook.md,student_repos/grade-book-student5/
+student6_gradebook.md,student_repos/grade-book-student6/
+student7_gradebook.md,student_repos/grade-book-student7/
 ```
 
 After running `gradeAlert` on a `CSV` file, you can create an instant listing of gradebookfiles which are placed in `pairings.txt`. Please use the following bash command for this task. 
@@ -134,19 +167,19 @@ The output of this copying-job is shown below.
  as defined in pairings.txt.
 
 0_out/student1_gradebook.md
-	-->  studentGradeBook_Repos/gradebook_A/
+	-->  student_repos/grade-book-student1/
 0_out/student2_gradebook.md
-	-->  studentGradeBook_Repos/gradebook_B/
+	-->  student_repos/grade-book-student2/
 0_out/student3_gradebook.md
-	-->  studentGradeBook_Repos/gradebook_C/
+	-->  student_repos/grade-book-student3/
 0_out/student4_gradebook.md
-	-->  studentGradeBook_Repos/gradebook_D/
+	-->  student_repos/grade-book-student4/
 0_out/student5_gradebook.md
-	-->  studentGradeBook_Repos/gradebook_E/
+	-->  student_repos/grade-book-student5/
 0_out/student6_gradebook.md
-	-->  studentGradeBook_Repos/gradebook_F/
+	-->  student_repos/grade-book-student6/
 0_out/student7_gradebook.md
-	-->  studentGradeBook_Repos/gradebook_G/
+	-->  student_repos/grade-book-student7/
 
 [+] Saving file for bulkPusher: dirNames
 ```
@@ -155,17 +188,20 @@ The output of this copying-job is shown below.
 Note that a new file, `dirNames` will be created from this copying operation, shown below.
 
 ```
-studentGradeBook_Repos/gradebook_A/
-studentGradeBook_Repos/gradebook_B/
-studentGradeBook_Repos/gradebook_C/
-studentGradeBook_Repos/gradebook_D/
-studentGradeBook_Repos/gradebook_E/
-studentGradeBook_Repos/gradebook_F/
+student_repos/grade-book-student1/
+student_repos/grade-book-student2/
+student_repos/grade-book-student3/
+student_repos/grade-book-student4/
+student_repos/grade-book-student5/
+student_repos/grade-book-student6/
+student_repos/grade-book-student7/
 ```
 
-The `dirNames` file may be used with the `bulkPusher.sh` script (explained below) for bulk pushing using `git`. We note that this file is especially useful since it only lists the successful copies of gradebook files into corresponding repositories. If an error occurred during copying, then the program would skip the repository and the `dirNames` would have no listing for the offending repository.
-
-
+The `dirNames` file may be used with the `bulkPusher.sh` script (explained below) for bulk pushing
+using `git`. We note that this file is especially useful since it only lists the successful copies
+of gradebook files into corresponding repositories. If an error occurred during copying, then the
+program would skip the repository and the `dirNames` would have no listing for the offending
+repository.
 
 ### Pushing in Bulk
 
@@ -183,7 +219,7 @@ To facilitate the pushing of all these repositories, the below script (located i
 ```bash
 
 # Bulk Pusher script.
-# Date: 11 Sept 2021
+# Date: 25 Sept 2023
 # Oliver Bonham-Carter, obonhamcarter@allegheny.edu
 # This script uses the File, dirNames, to locate repositories to push
 # The current date is printed in the commit message of the submit
@@ -229,13 +265,11 @@ repos/bulkPusher.sh
 
 In a convenient setup, the repositories, the files `dirNames` and `bulkPusher.sh` are to stored in root directory. The structure of the file system is discussed below.
 
-
 ### Structure
 
 The files are to be arranged in the following way for a typical usage. Note, this arrangement shows the demonstration files.
 
 ```
-
  ./0_out/
    - student1_gradebook.md
    - student2_gradebook.md
@@ -245,14 +279,14 @@ The files are to be arranged in the following way for a typical usage. Note, thi
    - student6_gradebook.md
    - student7_gradebook.md
 
- ./studentGradeBook_Repos/
-   - gradebook_A/
-   - gradebook_B/
-   - gradebook_C/
-   - gradebook_D/
-   - gradebook_E/
-   - gradebook_F/
-   - gradebook_G/
+ ./student_repos/
+   - grade-book-student1/
+   - grade-book-student2/
+   - grade-book-student3/
+   - grade-book-student4/
+   - grade-book-student5/
+   - grade-book-student6/
+   - grade-book-student7/
    
  ./
  - bulkPusher.sh
@@ -261,7 +295,6 @@ The files are to be arranged in the following way for a typical usage. Note, thi
  - gradeAlert.py
  - pairings.txt
  - repoBuilder.sh
-
 ```
 
 *Note: As the user uses Grade-Alert to handle gradebook repositories and markdown files, having the files in the above order will help to simplify the commands to use them.*
