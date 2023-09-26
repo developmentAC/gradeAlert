@@ -141,7 +141,7 @@ their associated repositories for bulk pushing (discussed below).
 `./gradeAlert.py -P`
 
  For this step, the File `pairings.txt` must be in the same directory as the `gradeAlert.py`.
- The pairing files lists the files (*left*) separated by a comma, and the repositories
+ The pairing file lists the files (*left*) separated by a comma, and the repositories
  (*right*) into which the file is to be copied before pushing. Shown below are the contents
  of `pairings.txt` for the accompanying gradebook spreadsheet example.
 
