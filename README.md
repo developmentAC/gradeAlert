@@ -1,5 +1,5 @@
 ##### GradeAlert
-##### Date: 14 Feb 2023
+##### Date: 25 Sept 2023
 ##### Oliver Bonham-Carter, [Allegheny College](https://allegheny.edu/)
 ##### email: obonhamcarter@allegheny.edu
 
@@ -17,6 +17,7 @@ GitHub link: https://github.com/developmentAC/gradeAlert
 * [Overview](#overview)
 * [Tool](#tool)
 * [Usage At Terminal](#usage-at-terminal)
+* [Grade book repositories](#grade-book-repositories)
 * [CSV](#CSV)
 * [Outputted files](#outputted-files)
 * [Placing Gradebook Files](#placing-gradebook-files)
@@ -25,8 +26,6 @@ GitHub link: https://github.com/developmentAC/gradeAlert
 * [Summary of Commands](summary-of-commands)
 * [A Work In Progress](#a-work-in-progress)
 
-
-
 ### Overview
 GitHub Classroom is an excellent resource to handle work repositories for a course of many students. Each student, after "accepting" an assignment is issued a unique repository in which work can be completed and pushed to the instructor.
 
@@ -34,11 +33,9 @@ Here, we suggest that GitHub Classroom be used to report grades to each student 
 
 ![Demo](graphics/gradeAlert_demo.gif)
 
-
 ### Tool
 
 All grades in a course are kept in a CSV spreadsheet. Grade-alert parses each row of the  spreadsheet and all contents are formatted and placed into a separate markdown file which is named according to the first column of the spreadsheet. These files are then to be placed into grade book repositories (discussed below) and pushed for the student to access.
-
 
 ### Usage-At-Terminal
 
@@ -49,7 +46,7 @@ To copy the outputted files into their respectful repositories for a bulk push, 
 
 *Note: discussion for each of these commands is below.*
 
-### Set up the students' grade book repositoryies
+### Grade book repositories
 
 GradeAlert works to copy grade book reports from the grade spreadsheet into GitHub repositories to be pushed.
 The students' repositories must first be created. It is recommended that a script be used to create pull the
@@ -84,12 +81,16 @@ called `student_repos`.
 
 ### CSV
 
-To use this Grade-Alert, the student grades are to be kept in a comma separated variable (CSV) file. Please note that no commas may be used in the fields of the CSV file as they will serve to confuse the true delimiters of the CSV structure and will prevent Grade-Alert from opening the CSV files correctly.
+To use this Grade-Alert, the student grades are to be kept in a comma separated variable (CSV) file.
+Please note that no commas may be used in the fields of the CSV file as they will serve to confuse
+the true delimiters of the CSV structure and will prevent Grade-Alert from opening the CSV files correctly.
 
-
-
-In a grade book spreadsheet, each row contains the grades of the individuals in the course. The columns header provide details of the assignment and type of feedback. The first column **must** contain the name of the student; this information will be used to name the outputted files and serve to inform which output file corresponds with what grade book repository. The rest of the information for a row will be formatted and placed into the outputted file. The CSV formatting for a grade book CSV files is shown below in the table.
-
+In a grade book spreadsheet, each row contains the grades of the individuals in the course. The columns
+header provide details of the assignment and type of feedback. The first column **must** contain the
+name of the student; this information will be used to name the outputted files and serve to inform
+which output file corresponds with what grade book repository. The rest of the information for a
+row will be formatted and placed into the outputted file. The CSV formatting for a grade book CSV
+files is shown below in the table.
 
 |Student Name|	Student ID|	Activity 01|	Activity 01 Comments|	Activity 02|	Activity 02 comments|
 |---|---|---|---|---|---|
@@ -103,7 +104,9 @@ In a grade book spreadsheet, each row contains the grades of the individuals in 
 
 ### Outputted files
 
-After running the Grade-Alert tool on a CSV file containing the information of the above table, a file for each row is outputted. For example, the report of `student1` will take the following form.
+After running the Grade-Alert tool on a CSV file containing the information of the above
+table, a file for each row is outputted. For example, the report of `student1` will take
+the following form.
 
 
 File: `student1_gradebook.md`
@@ -125,18 +128,23 @@ ____
 
 ```
 
-Each prepared file is then to be placed into its associated grade book repository and is pushed out for the student.
+Each prepared file is then to be placed into its associated grade book repository and is
+pushed out for the student.
 
 ### Placing Gradebook Files
-Using option `-P`, the user can have Grade-Alert copy the gradebook markdown files into their associated repositories for bulk pushing (discussed below).
+
+Using option `-P`, the user can have Grade-Alert copy the gradebook markdown files into
+their associated repositories for bulk pushing (discussed below).
 
 ###### Usage
 
 `./gradeAlert.py -P`
 
- For this step, the File `pairings.txt` must be in the same directory as the `gradeAlert.py`. The pairing files lists the files (*left*) separated by a comma, and the repositories (*right*) into which the file is to be copied before pushing. Shown below are the contents of `pairings.txt` for the accompanying gradebook spreadsheet example.
+ For this step, the File `pairings.txt` must be in the same directory as the `gradeAlert.py`.
+ The pairing files lists the files (*left*) separated by a comma, and the repositories
+ (*right*) into which the file is to be copied before pushing. Shown below are the contents
+ of `pairings.txt` for the accompanying gradebook spreadsheet example.
 
-grade-book-student1
 ```
 student1_gradebook.md,student_repos/grade-book-student1/
 student2_gradebook.md,student_repos/grade-book-student2/
@@ -147,20 +155,22 @@ student6_gradebook.md,student_repos/grade-book-student6/
 student7_gradebook.md,student_repos/grade-book-student7/
 ```
 
-After running `gradeAlert` on a `CSV` file, you can create an instant listing of gradebookfiles which are placed in `pairings.txt`. Please use the following bash command for this task. 
+After running `gradeAlert` on a `CSV` file, you can create an instant listing of grade book files
+which are placed in `pairings.txt`. Please use the following bash command for this task. 
+
 ```
 ls -l | cut -d " " -f 11 | sort | uniq > pairings.txt
 ```
 
 __Note: Be sure to remove all spaces in the `pairings.txt` file.__
 
-
-For his or her own requirements, the user is to modify this file, which is essentially a `csv` file that could be created by a spreadsheet such as [LibreOffice](https://www.libreoffice.org/) Calc. If the pairing file is not present when the option `-P` is invoked, then an error message will result and end the Grade-Alert execution.
-
+For his or her own requirements, the user is to modify this file, which is essentially a `csv`
+file that could be created by a spreadsheet such as [LibreOffice](https://www.libreoffice.org/)
+Calc. If the pairing file is not present when the option `-P` is invoked, then an error message
+will result and end the Grade-Alert execution.
 
 ###### Output
 The output of this copying-job is shown below.
-
 
 ```
 [+] Copying files into associated repositories
@@ -184,7 +194,6 @@ The output of this copying-job is shown below.
 [+] Saving file for bulkPusher: dirNames
 ```
 
-
 Note that a new file, `dirNames` will be created from this copying operation, shown below.
 
 ```
@@ -205,16 +214,27 @@ repository.
 
 ### Pushing in Bulk
 
-Each student who has accepted the grade book "assignment" will have a repository that the instructor can access. Sadly, the [GitHub Assistant](http://https://classroom.github.com/assistant) (link: https://classroom.github.com/assistant) will not work to create repositories into which grades may be pushed. Instead, the instructor is to clone each of the grade book "assignment" repositories listed by GitHub Classroom and then copy the individual gradebook files into each repository.
+Each student who has accepted the grade book "assignment" will have a repository that the instructor
+an access. Sadly, the [GitHub Assistant](http://https://classroom.github.com/assistant)
+(link: https://classroom.github.com/assistant) will not work to create repositories into which grades
+may be pushed. Instead, the instructor is to clone each of the grade book "assignment" repositories
+listed by GitHub Classroom and then copy the individual gradebook files into each repository.
 
-The creation of multiple gradebook repositories may be done by adding the `git clone` statements into a script file such as the included file, `repoBuilder.sh` and then running the script using, `sh repoBuilder.sh`. The user is advised to edit this script file as necessary -- there are two lines that have been added create a directory called `student_repos/` and then to copy in all repositories starting with `gradebook_` into the directory.
-
+The creation of multiple gradebook repositories may be done by adding the `git clone` statements
+into a script file such as the included file, `repoBuilder.sh` and then running the script using,
+`sh repoBuilder.sh`. The user is advised to edit this script file as necessary -- there are two
+lines that have been added create a directory called `student_repos/` and then to copy in all
+repositories starting with `gradebook_` into the directory.
 
 Grade book repositories may now be pushed by the instructor using the below `bulkPusher.sh` script.
 
-After completing course grades save a copy of the spreadsheet as a CSV file. Grader-Alert may be executed with the CSV file as the parameter. The resulting files will have to be placed into the individual grade book repositories.
+After completing course grades save a copy of the spreadsheet as a CSV file. Grader-Alert may be
+executed with the CSV file as the parameter. The resulting files will have to be placed into the
+individual grade book repositories.
 
-To facilitate the pushing of all these repositories, the below script (located in `src/bulkPusher.sh`) may be be used. To execute this script in Linux and MacOS, use the command, `sh bulkPusher.sh` when the files have been copied into the grade book repositories.
+To facilitate the pushing of all these repositories, the below script
+(located in `src/bulkPusher.sh`) may be be used. To execute this script in Linux and MacOS, use
+the command, `sh bulkPusher.sh` when the files have been copied into the grade book repositories.
 
 ```bash
 
@@ -246,13 +266,17 @@ done
 rm mydir
 ```
 
-The file, `dirNames` contains the paths of the repositories to which we push. To conveniently prepare this file, begin with the following command from the directory where the class repositories are stored.
+The file, `dirNames` contains the paths of the repositories to which we push. To conveniently
+prepare this file, begin with the following command from the directory where the class
+repositories are stored.
 
 ``` bash
 ls > dirNames
 ```
 
-This file is to be edited to contain only the paths to the student grade book repositories. This file is then to be stored in the same root as the repositories so that the `bulkPushers.sh` can find it (and the repository paths it contains) when run.
+This file is to be edited to contain only the paths to the student grade book repositories. This
+file is then to be stored in the same root as the repositories so that the `bulkPushers.sh` can
+find it (and the repository paths it contains) when run.
 
 The contents of the student repositories directory should be similar to the following.
 ```
@@ -263,11 +287,13 @@ repos/dirNames
 repos/bulkPusher.sh
 ```
 
-In a convenient setup, the repositories, the files `dirNames` and `bulkPusher.sh` are to stored in root directory. The structure of the file system is discussed below.
+In a convenient setup, the repositories, the files `dirNames` and `bulkPusher.sh` are to stored
+in root directory. The structure of the file system is discussed below.
 
 ### Structure
 
-The files are to be arranged in the following way for a typical usage. Note, this arrangement shows the demonstration files.
+The files are to be arranged in the following way for a typical usage. Note, this arrangement
+shows the demonstration files.
 
 ```
  ./0_out/
@@ -297,12 +323,14 @@ The files are to be arranged in the following way for a typical usage. Note, thi
  - repoBuilder.sh
 ```
 
-*Note: As the user uses Grade-Alert to handle gradebook repositories and markdown files, having the files in the above order will help to simplify the commands to use them.*
+*Note: As the user uses Grade-Alert to handle gradebook repositories and markdown files, having
+the files in the above order will help to simplify the commands to use them.*
 
 
 ### Summary of Commands
 
- - Be sure that you have all student repositories in a directory called, `student_repos/`. Note: it is recommended that these repositories be created by copying all the `git clone` statements into a script file so that the repositories can be automatically created with each grade-update. Once the grades have been updated, then these repositories could be removed from the working directory to reduce clutter. Just an idea.
+ - Be sure that you have all student repositories in a directory called, `student_repos/`.
+ - Note: it is recommended that these repositories be created by copying all the `git clone` statements into a script file so that the repositories can be automatically created with each grade-update. Once the grades have been updated, then these repositories could be removed from the working directory to reduce clutter. Just an idea.
 
  - Save a gradebook file in a CSV file format (ex: `mygradebook.csv`).
 
@@ -318,9 +346,15 @@ The files are to be arranged in the following way for a typical usage. Note, thi
 
 ### A work in progress
 
-Check back often to see the evolution of this project!! Grade-Alert is a work-in-progress. Updates are likely to come soon with feedback. If you would like to contribute to this project, __then please do!__ For instance, if you see some low-hanging fruit or task that you could easily complete, that could add value to the project, then I would love to have your insight.
+Check back often to see the evolution of this project!! Grade-Alert is a work-in-progress.
+Updates are likely to come soon with feedback. If you would like to contribute to this project,
+__then please do!__ For instance, if you see some low-hanging fruit or task that you could easily
+complete, that could add value to the project, then I would love to have your insight.
 
-Otherwise, please create an Issue for bugs or errors. Since I am a teaching faculty member at Allegheny College, I may not have all the time necessary to quickly fix the bugs and so I would be very happy to have any help that I can get from the OpenSource community for any technological insight. Much thanks in advance. I hope that this project helps you to conveniently publish your course grades. 
+Otherwise, please create an Issue for bugs or errors. Since I am a teaching faculty member at
+Allegheny College, I may not have all the time necessary to quickly fix the bugs and so I would be
+very happy to have any help that I can get from the OpenSource community for any technological
+insight. Much thanks in advance. I hope that this project helps you to conveniently publish your course grades. 
 
-If you appreciate this project, please consider clicking the project's _Star_ button. 
+If you appreciate this project and would like to follow it, then please consider clicking the project's _Star_ button. 
 :-)
